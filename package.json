@@ -1,0 +1,19 @@
+{
+  "name": "research-node4",
+  "version": "1.0.0",
+  "description": "Research Node v4 (ES6) project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roybailey/research-node4.git"
+  },
+  "author": "Roy Bailey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/roybailey/research-node4/issues"
+  },
+  "homepage": "https://github.com/roybailey/research-node4#readme"
+}
