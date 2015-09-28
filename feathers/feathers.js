@@ -1,0 +1,1 @@
+// http://feathersjs.com/

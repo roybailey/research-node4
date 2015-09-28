@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/roybailey/research-node4/issues"
   },
-  "homepage": "https://github.com/roybailey/research-node4#readme"
+  "homepage": "https://github.com/roybailey/research-node4#readme",
+  "dependencies": {
+    "body-parser": "1.14.1",
+    "feathers": "1.1.1",
+    "feathers-memory": "0.3.4",
+    "xhr2": "0.1.3"
+  }
 }

@@ -10,6 +10,8 @@ let printPromisefiedFakeStuff = new Promise((resolve, reject)=> {
         return `Promisefied ${item}`;
     });
 
+    console.log('Created Promisefied Fake Collection');
+
     setTimeout(()=> {
         resolve(fakePromiseCollection);
     }, 1000);
@@ -19,9 +21,14 @@ fakeCollection.forEach((item, i)=> {
     console.log(`Item ${i + 1}: ${item}`);
 });
 
+console.log('Using Promisefied Fake Collection');
+
 printPromisefiedFakeStuff.then((result)=> {
+    console.log("Promise Fulfilled");
     result.forEach((item, i)=> {
         console.log(`Item ${i + 1}: ${item}`);
     });
     console.log(`With native es2015 features like let, const, arrow functions, template strings, promises, and more... ${STATUS}`);
+}, (error) => {
+    console.log("Promise Rejected");
 });
