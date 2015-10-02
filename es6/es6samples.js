@@ -1,6 +1,9 @@
 'use strict';
 
-console.log("\n\n1. Template Strings");
+// ----------------------------------------
+// Template Strings
+// ----------------------------------------
+console.log("\n\nTemplate Strings");
 // ES6 brings us template strings:
 
 var multiLineMessage = `
@@ -16,6 +19,9 @@ var inlineMessage = `Hello ${inlineName}, how is your dog?`;
 console.log(inlineMessage);
 
 
+// ----------------------------------------
+// Classes
+// ----------------------------------------
 console.log("\n\n2. Classes");
 // An extends keyword, constructors, calls to the super class and properties.
 
@@ -50,18 +56,24 @@ new Dog().sayHello();
 console.log("^that was dog");
 
 
-console.log("\n\n3. Arrow Functions");
+// ----------------------------------------
+// Arrow Functions
+// ----------------------------------------
+console.log("\n\nArrow Functions");
 // 'this' is now bound correctly in an arrow function to the calling 'this' object
 Dog.prototype.notifyListeners = () => {
     this._listeners.forEach((listener) => {
         this.notifyListener(listener);
     });
 };
-console.log("Pet.notifyListeners = "+ Pet.prototype['notifyListeners']);
-console.log("Dog.notifyListeners = "+ Dog.prototype['notifyListeners']);
+console.log("Pet.notifyListeners = " + Pet.prototype['notifyListeners']);
+console.log("Dog.notifyListeners = " + Dog.prototype['notifyListeners']);
 
 
-console.log("\n\n4. Object Literals");
+// ----------------------------------------
+// Object Literals
+// ----------------------------------------
+console.log("\n\nObject Literals");
 // When using object literals, you can now use a nice little shortcut:
 // where the result is object built as { variablename : variable-value, ... }
 var age = 10, name = 'Spot', size = 32;
@@ -74,7 +86,10 @@ var dog = {
 console.log(dog);
 
 
-console.log("\n\n5. String Methods");
+// ----------------------------------------
+// String Methods
+// ----------------------------------------
+console.log("\n\nString Methods");
 // We got a couple of new string utility functions too:
 // replace `indexOf()` in a number of cases
 var something = "Javascript";
@@ -89,7 +104,10 @@ console.log(`Javascript.includes('v') = ${something.includes('v')}`);
 console.log(`Javascript.repeat(3) = ${something.repeat(3)}`);
 
 
-console.log("\n\n6. let and const");
+// ----------------------------------------
+// let and const
+// ----------------------------------------
+console.log("\n\nlet and const");
 // Guess the return value of the following function call:
 
 var x1 = 20;
@@ -120,9 +138,13 @@ console.log("x2=" + x2result());
 // const MY_CONST = 42; // yes, yes
 // MY_CONST = 10 // with const, this is no longer possible
 
-console.log("\n\n7. Promises");
 
-var p1 = new Promise(function (resolve, reject) {
+// ----------------------------------------
+// Promises
+// ----------------------------------------
+console.log("\n\nPromises");
+
+var p1 = new Promise((resolve, reject) => {
     resolve(55);
 });
 var p2 = Promise.resolve(20);
@@ -149,4 +171,36 @@ p4.then((data) => {
     console.log("p4 resolved: " + data);
 }).catch((error) => {
     console.log("p4 error: " + error);
+});
+
+new Promise((resolve, reject) => {
+    resolve(1);
+}).then(res => {
+        res.a.prop.that.does.not.exist
+    })
+    .catch(err => {
+        // this is executed because it is capturing errors in above then block
+        console.error(err.message);
+        console.log("^only one error");
+    })
+    .catch(err => {
+        // this is not executed because it is capturing errors in above catch block
+        console.error(err.message);
+        console.log("never executed");
+    });
+
+var p6 = new Promise((resolve, reject) => {
+    resolve(1);
+}).then(res => {
+        res.a.prop.that.does.not.exist
+    });
+
+p6.catch(err => {
+    // this is executed because it is capturing errors in above then block
+    console.error(err.message + " (first error)");
+});
+p6.catch(err => {
+    // this is executed because it is capturing errors in above then block
+    console.error(err.message);
+    console.log("^two errors both executed from same block error");
 });
