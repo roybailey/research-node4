@@ -31,22 +31,18 @@ console.log("odd =", o5.value);
 
 console.log("----- Generator Sequence Using a Loop -----");
 function *generatorDynamicSequence() {
-    let e1 = yield 1;
-    console.log("even=", e1);
-    let e2 = yield e1+1;
-    console.log("even=", e2);
-    let e3 = yield e2+1;
-    console.log("even=", e3);
-    let e4 = yield e3+1;
-    console.log("even=", e4);
-    let e5 = yield e4+1;
-    console.log("even=", e5);
+    let value = yield 1;
+    while (true) {
+        console.log("even=", value);
+        value = yield value + 1;
+    }
 }
 
 let dynamicSequence = generatorDynamicSequence();
 let output = undefined;
 let input = undefined;
-while (!(output = dynamicSequence.next(input)).done) {
+do {
+    output = dynamicSequence.next(input);
     console.log("odd =", output.value);
     input = output.value + 1;
-}
+} while(input < 10 && !output.done);
