@@ -13,3 +13,4 @@ node_modules/
 hs_err_pid*
 
 .idea/
+/nbproject/private/
